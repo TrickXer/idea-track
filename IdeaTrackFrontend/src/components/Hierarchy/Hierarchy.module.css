@@ -1,0 +1,96 @@
+/* Hierarchy Index Styles */
+
+.hierarchyContainer {
+  padding-top: 128px;
+}
+
+.ideaCard {
+  max-width: 384px;
+  cursor: pointer;
+  border-radius: 14px;
+  border: none;
+  box-shadow: 0 2px 12px rgba(67, 24, 255, 0.07);
+  transition: all 0.3s ease;
+}
+
+.ideaCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(67, 24, 255, 0.14);
+}
+
+.ideaCardIcon {
+  padding: 0.75rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(67, 24, 255, 0.1), rgba(108, 92, 231, 0.1));
+}
+
+.stageConnector {
+  width: 100%;
+  max-width: 384px;
+}
+
+.stageButtonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.stageButton {
+  max-width: 384px;
+  border-radius: 12px;
+  border: 2px solid #E9EDF7;
+  background: #ffffff;
+  color: #1B254B;
+  font-weight: 600;
+  padding: 12px 20px;
+  transition: all 0.3s ease;
+}
+
+.stageButton:hover {
+  background: linear-gradient(135deg, #4318FF, #6c5ce7);
+  color: white;
+  border-color: #4318FF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(67, 24, 255, 0.2);
+}
+
+.stageButtonIconColumn {
+  text-align: start;
+}
+
+.iconSpacing {
+  margin-right: 1rem;
+}
+
+.statusBadgeInfo {
+  background-color: #EFF3FF;
+  border: 2px solid #4318FF;
+  color: #4318FF;
+  font-weight: 600;
+  border-radius: 12px;
+}
+
+.statusBadgeSuccess {
+  background-color: #D1FAE5;
+  border: 2px solid #059669;
+  color: #059669;
+  font-weight: 600;
+  border-radius: 12px;
+}
+
+.statusBadgeDanger {
+  background-color: #FEE2E2;
+  border: 2px solid #DC2626;
+  color: #DC2626;
+  font-weight: 600;
+  border-radius: 12px;
+}
+
+.modalTitle {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}

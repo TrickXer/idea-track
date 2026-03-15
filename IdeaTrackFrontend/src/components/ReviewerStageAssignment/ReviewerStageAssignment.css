@@ -1,0 +1,378 @@
+/* ============================================================
+   IdeaTrack — Reviewer Stage Assignment Styles
+   Design language aligned with the rest of the IdeaTrack
+   frontend: tokens from index.css / reviewer.css,
+   card/table patterns from CategoryManagement & AdminDashboard.
+   ============================================================ */
+
+/* ── Design tokens (local scope — mirrors global :root) ──── */
+:root {
+  --rsa-primary:     #4318FF;
+  --rsa-primary-bg:  #EFF3FF;
+  --rsa-primary-lt:  #868CFF;
+  --rsa-dark:        #1B254B;
+  --rsa-muted:       #A3AED0;
+  --rsa-bg:          #F4F7FE;
+  --rsa-surface:     #ffffff;
+  --rsa-border:      #E9EDF7;
+  --rsa-danger:      #EF4444;
+  --rsa-danger-bg:   #FEF2F2;
+  --rsa-success:     #10B981;
+  --rsa-radius:      16px;
+  --rsa-radius-sm:   10px;
+  --rsa-shadow:      0 2px 12px rgba(67, 24, 255, 0.07);
+  --rsa-shadow-md:   0 8px 28px rgba(67, 24, 255, 0.12);
+}
+
+/* ── Page layout ────────────────────────────────────────── */
+.rsa-page {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ── Page header ────────────────────────────────────────── */
+.rsa-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.rsa-page-title {
+  margin: 0 0 4px;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--rsa-dark);
+}
+
+.rsa-page-sub {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--rsa-muted);
+}
+
+/* ── Card ───────────────────────────────────────────────── */
+.rsa-card {
+  background: var(--rsa-surface);
+  border-radius: var(--rsa-radius);
+  box-shadow: var(--rsa-shadow);
+  overflow: hidden;
+}
+
+.rsa-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px 24px 18px;
+  border-bottom: 1px solid var(--rsa-border);
+}
+
+.rsa-card-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--rsa-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rsa-card-title-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--rsa-primary-bg);
+  color: var(--rsa-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.rsa-card-body {
+  padding: 24px;
+}
+
+/* ── Two-column layout inside creation card ─────────────── */
+.rsa-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .rsa-two-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Form elements ──────────────────────────────────────── */
+.rsa-form-group {
+  margin-bottom: 18px;
+}
+
+.rsa-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--rsa-muted);
+}
+
+.rsa-select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--rsa-border);
+  border-radius: var(--rsa-radius-sm);
+  font-size: 0.9rem;
+  color: var(--rsa-dark);
+  background: var(--rsa-surface);
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23A3AED0' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  cursor: pointer;
+}
+
+.rsa-select:focus {
+  border-color: var(--rsa-primary);
+  box-shadow: 0 0 0 3px rgba(67, 24, 255, 0.1);
+}
+
+.rsa-select:disabled {
+  background-color: var(--rsa-bg);
+  color: var(--rsa-muted);
+  cursor: not-allowed;
+  border-color: var(--rsa-border);
+}
+
+/* ── Submit button ──────────────────────────────────────── */
+.rsa-btn-primary {
+  width: 100%;
+  padding: 11px 20px;
+  background: var(--rsa-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--rsa-radius-sm);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.18s, transform 0.15s, box-shadow 0.18s;
+  margin-top: 8px;
+}
+
+.rsa-btn-primary:hover {
+  background: #3311cc;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(67, 24, 255, 0.25);
+}
+
+.rsa-btn-primary:active {
+  transform: translateY(0);
+}
+
+/* ── View Data button ───────────────────────────────────── */
+.rsa-btn-secondary {
+  padding: 8px 20px;
+  background: var(--rsa-primary-bg);
+  color: var(--rsa-primary);
+  border: none;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.18s, transform 0.15s;
+}
+
+.rsa-btn-secondary:hover {
+  background: #dde4ff;
+  transform: translateY(-1px);
+}
+
+/* ── Available Reviewers side panel ─────────────────────── */
+.rsa-reviewers-panel {
+  background: var(--rsa-bg);
+  border-radius: var(--rsa-radius-sm);
+  overflow: hidden;
+  height: 100%;
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+}
+
+.rsa-reviewers-panel-header {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--rsa-border);
+  background: var(--rsa-surface);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--rsa-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── Tables ─────────────────────────────────────────────── */
+.rsa-table-wrap {
+  overflow-x: auto;
+  flex: 1;
+}
+
+.rsa-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.rsa-table thead tr {
+  background: var(--rsa-surface);
+  border-bottom: 1px solid var(--rsa-border);
+}
+
+.rsa-table th {
+  padding: 11px 16px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--rsa-muted);
+  white-space: nowrap;
+  text-align: left;
+}
+
+.rsa-table td {
+  padding: 13px 16px;
+  font-size: 0.875rem;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--rsa-bg);
+  color: var(--rsa-dark);
+}
+
+.rsa-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.rsa-table tbody tr:hover {
+  background: #fafbff;
+}
+
+/* ── ID / muted cell ────────────────────────────────────── */
+.rsa-td-muted {
+  color: var(--rsa-muted);
+  font-size: 0.82rem;
+}
+
+/* ── Category badge ─────────────────────────────────────── */
+.rsa-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.73rem;
+  font-weight: 700;
+  background: var(--rsa-primary-bg);
+  color: var(--rsa-primary);
+}
+
+.rsa-badge-stage {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.73rem;
+  font-weight: 700;
+  background: #F0FFF4;
+  color: #065F46;
+}
+
+/* ── Delete / danger button ─────────────────────────────── */
+.rsa-btn-delete {
+  padding: 6px 12px;
+  border: 1.5px solid var(--rsa-danger);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--rsa-danger);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.rsa-btn-delete:hover {
+  background: var(--rsa-danger-bg);
+}
+
+/* ── Empty state ─────────────────────────────────────────── */
+.rsa-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  color: var(--rsa-muted);
+  font-size: 0.88rem;
+  gap: 8px;
+  flex: 1;
+}
+
+.rsa-empty-icon {
+  font-size: 2.2rem;
+  opacity: 0.45;
+  margin-bottom: 4px;
+}
+
+/* ── Inner tab nav (Assign / View toggle) ────────────────── */
+.rsa-inner-tabs {
+  display: flex;
+  gap: 6px;
+  border-bottom: 2px solid var(--rsa-border);
+  margin-bottom: 20px;
+  padding-bottom: 0;
+}
+
+.rsa-inner-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  border: none;
+  background: transparent;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--rsa-muted);
+  cursor: pointer;
+  border-bottom: 2.5px solid transparent;
+  margin-bottom: -2px;
+  border-radius: 0;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.rsa-inner-tab:hover {
+  color: var(--rsa-dark);
+}
+
+.rsa-inner-tab.active {
+  color: var(--rsa-primary);
+  border-bottom-color: var(--rsa-primary);
+}

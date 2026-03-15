@@ -1,0 +1,227 @@
+/* ── CategoryManagement.css ─────────────────────────────────── */
+
+.cat-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+/* ── Stats row ─────────────────────────────────────────────── */
+.cat-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.cat-stat-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cat-stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+}
+
+.cat-stat-icon.purple {
+  background: #eef2ff;
+  color: #6366f1;
+}
+.cat-stat-icon.green {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.cat-stat-info h4 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.cat-stat-info p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* ── Table ──────────────────────────────────────────────────── */
+.cat-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cat-table thead {
+  background: #f8fafc;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.cat-table th {
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #6b7280;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.cat-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.cat-table tbody tr:hover {
+  background: #fafbfc;
+}
+
+/* ── Dept pill ─────────────────────────────────────────────── */
+.dept-pill {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  background: #eef2ff;
+  color: #3730a3;
+}
+
+/* ── Action dropdown (3-dot menu) ──────────────────────────── */
+.cat-action-wrapper {
+  position: relative;
+}
+
+.cat-action-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: #6b7280;
+  transition: 0.2s;
+}
+
+.cat-action-btn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.cat-action-menu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 4px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  min-width: 150px;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.cat-action-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  transition: 0.2s;
+}
+
+.cat-action-menu button:hover {
+  background: #f8fafc;
+  color: #6c63ff;
+}
+
+.cat-action-menu button.danger {
+  color: #ef4444;
+}
+
+.cat-action-menu button.danger:hover {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+/* ── Form card ─────────────────────────────────────────────── */
+.cat-form-card {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  padding: 24px;
+}
+
+.cat-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .cat-form-row {
+    grid-template-columns: 1fr;
+  }
+  .cat-table {
+    font-size: 13px;
+  }
+  .cat-table td,
+  .cat-table th {
+    padding: 10px 8px;
+  }
+}
+
+/* ── Toast ─────────────────────────────────────────────────── */
+.cat-toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #1f2937;
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1);
+  transform: translateY(100px);
+  opacity: 0;
+  transition: 0.3s;
+  z-index: 2000;
+}
+
+.cat-toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ── Empty state ───────────────────────────────────────────── */
+.cat-empty {
+  border: 2px dashed #e5e7eb;
+  background: #fafbff;
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  color: #6b7280;
+}
+
+/* ── Validation error ──────────────────────────────────────── */
+.field-error {
+  color: #ef4444;
+  font-size: 12px;
+  margin-top: 4px;
+}

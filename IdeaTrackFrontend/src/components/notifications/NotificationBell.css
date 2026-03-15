@@ -1,0 +1,147 @@
+/* ── NotificationBell.css ──────────────────────────────────── */
+
+.bell-wrapper {
+  position: relative;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: 0.2s;
+  user-select: none;
+}
+
+.bell-wrapper:hover {
+  background: #f1f5f9;
+}
+
+.bell-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.bell-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  min-width: 18px;
+  height: 18px;
+  background: #ef4444;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  border: 2px solid #fff;
+  pointer-events: none;
+}
+
+/* ── Panel ─────────────────────────────────────────────────── */
+.notif-panel {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  width: 370px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1);
+  z-index: 1000;
+  overflow: hidden;
+  animation: notifSlideDown 0.2s ease-out;
+}
+
+@keyframes notifSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.notif-panel-header {
+  padding: 16px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notif-panel-header h6 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.mark-all-btn {
+  background: none;
+  border: none;
+  color: #6c63ff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mark-all-btn:hover {
+  text-decoration: underline;
+}
+
+/* ── Notification items ────────────────────────────────────── */
+.notif-panel-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.notif-panel-item {
+  padding: 14px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  gap: 12px;
+  transition: 0.15s;
+  cursor: pointer;
+}
+
+.notif-panel-item:hover {
+  background: #f8fafc;
+}
+
+.notif-panel-item.unread {
+  background: #f0f7ff;
+}
+
+.notif-panel-item:last-child {
+  border-bottom: none;
+}
+
+/* ── Footer ────────────────────────────────────────────────── */
+.notif-panel-footer {
+  padding: 12px;
+  text-align: center;
+  background: #fafbff;
+  border-top: 1px solid #e5e7eb;
+}
+
+.notif-panel-footer button {
+  background: none;
+  border: none;
+  color: #6c63ff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.notif-panel-footer button:hover {
+  text-decoration: underline;
+}
+
+/* ── Empty state ───────────────────────────────────────────── */
+.notif-empty {
+  padding: 30px;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 14px;
+}

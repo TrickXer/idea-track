@@ -1,0 +1,418 @@
+/* ── NotificationItem.css ──────────────────────────────────── */
+
+/* ── Priority Badge ────────────────────────────────────────── */
+.priority-badge {
+  padding: 1px 4px;
+  border-radius: 6px;
+  font-size: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: inline-block;
+  line-height: 1.2;
+}
+
+.priority-badge.high {
+  background: #fef2f2;
+  color: #ef4444;
+}
+
+.priority-badge.medium {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.priority-badge.low {
+  background: #ecfdf5;
+  color: #10b981;
+}
+
+/* ── Compact variant (bell dropdown) ───────────────────────── */
+.notif-panel-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  gap: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-sizing: border-box;
+}
+
+.notif-panel-item:hover {
+  background: #f9fafb;
+}
+
+.notif-panel-item.unread {
+  background: #f0f7ff;
+}
+
+.notif-panel-item:last-child {
+  border-bottom: none;
+}
+
+.notif-item-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.notif-item-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.notif-item-msg {
+  font-size: 12px;
+  color: #6b7280;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 4px;
+}
+
+.notif-item-footer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+}
+
+.notif-item-time {
+  font-size: 11px;
+  color: #94a3b8;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.notif-type-icon {
+  flex-shrink: 0;
+  color: #6c63ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  min-height: 16px;
+}
+
+/* ── Full page variant (AllNotifications) ───────────────────── */
+.notif-row {
+  display: flex;
+  align-items: flex-start;
+  padding: 12px;
+  border-bottom: 1px solid #e2e8f0;
+  gap: 10px;
+  transition: background 0.2s;
+  animation: notifFadeIn 0.3s ease;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+}
+
+.notif-row:last-child {
+  border-bottom: none;
+}
+
+.notif-row:hover {
+  background: #f8fafc;
+}
+
+.notif-row.unread {
+  background: #f0f7ff;
+}
+
+.notif-row-body {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.notif-row-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4px;
+  gap: 8px;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.notif-row-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 2px;
+  word-break: break-word;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.notif-row-msg {
+  font-size: 12px;
+  color: #475569;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-bottom: 4px;
+}
+
+.notif-row-footer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.notif-row-time {
+  font-size: 11px;
+  color: #94a3b8;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.notif-type-badge {
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notif-type-badge.high {
+  background: #fef2f2;
+  color: #ef4444;
+}
+
+.notif-type-badge.medium {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.notif-type-badge.low {
+  background: #ecfdf5;
+  color: #10b981;
+}
+
+/* ── Dot for read/unread status ────────────────────────────── */
+.notif-unread-dot {
+  width: 8px;
+  height: 8px;
+  background: #6c63ff;
+  border-radius: 50%;
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+
+.notif-dot-spacer {
+  width: 8px;
+  flex-shrink: 0;
+}
+
+/* ── Animation ─────────────────────────────────────────────── */
+@keyframes notifFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (min-width: 768px) {
+  .notif-panel-item {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .notif-item-title {
+    font-size: 14px;
+  }
+
+  .notif-item-msg {
+    font-size: 13px;
+  }
+
+  .notif-row {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .notif-row-title {
+    font-size: 14px;
+  }
+
+  .notif-row-msg {
+    font-size: 13px;
+  }
+
+  .notif-row-time {
+    font-size: 12px;
+  }
+
+  .priority-badge {
+    padding: 2px 5px;
+    font-size: 8px;
+  }
+
+  .notif-type-badge {
+    padding: 3px 8px;
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .notif-panel-item {
+    padding: 14px;
+  }
+
+  .notif-item-title {
+    font-size: 14px;
+  }
+
+  .notif-item-msg {
+    font-size: 13px;
+  }
+
+  .notif-row {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .notif-row-title {
+    font-size: 15px;
+  }
+
+  .notif-row-msg {
+    font-size: 14px;
+  }
+
+  .notif-row-time {
+    font-size: 12px;
+  }
+
+  .priority-badge {
+    padding: 2px 5px;
+    font-size: 8px;
+  }
+
+  .notif-type-badge {
+    padding: 4px 10px;
+    font-size: 11px;
+  }
+}
+
+/* ── Metadata-driven enhancements ──────────────────────────── */
+
+/* Clickable items get a pointer cursor (already set, but kept explicit) */
+.notif-panel-item.clickable,
+.notif-row.clickable {
+  cursor: pointer;
+}
+
+/* Action label chip shown next to the title */
+.notif-action-label {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 6px;
+  border-radius: 8px;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  background: #ede9fe;
+  color: #6c63ff;
+  vertical-align: middle;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* "by Reviewer" / "by John" label in footer */
+.notif-triggered-by {
+  font-size: 11px;
+  color: #64748b;
+  font-style: italic;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* Context chip: shows idea title, badge name, stage inside the notification row */
+.notif-context-hint {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.notif-context-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 7px;
+  border-radius: 8px;
+  background: #f1f5f9;
+  color: #334155;
+  font-size: 11px;
+  font-weight: 500;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Redirect arrow in compact bell dropdown */
+.notif-redirect-arrow {
+  flex-shrink: 0;
+  font-size: 16px;
+  color: #94a3b8;
+  align-self: center;
+  margin-left: auto;
+  padding-left: 4px;
+}
+
+/* "View →" link in full row footer */
+.notif-row-link {
+  font-size: 11px;
+  color: #6c63ff;
+  font-weight: 600;
+  cursor: pointer;
+  flex-shrink: 0;
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+.notif-panel-item.clickable:hover .notif-redirect-arrow {
+  color: #6c63ff;
+}
+
+.notif-row.clickable:hover .notif-row-link {
+  text-decoration: underline;
+}

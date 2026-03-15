@@ -1,0 +1,101 @@
+/* ActivityTab Styles */
+
+:root {
+  --primary-color: #4318FF;
+  --secondary-color: #6C63FF;
+  --success-color: #01B574;
+  --warning-color: #FFB547;
+  --danger-color: #EE5D50;
+  --dark-bg: #1B254B;
+  --light-bg: #F4F7FE;
+  --white: #ffffff;
+  --gray-100: #F4F7FE;
+  --gray-200: #E9EDF7;
+  --gray-300: #A3AED0;
+  --gray-400: #707EAE;
+  --gray-500: #2B3674;
+  --card-shadow: 0px 18px 40px rgba(112, 144, 176, 0.12);
+}
+
+.modalContainer {
+  inset: 0;
+  position: fixed;
+  z-index: 1050;
+}
+
+.modalBackdrop {
+  inset: 0;
+  position: fixed;
+  background-color: rgba(27, 37, 75, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+.filterCard {
+  top: 24px;
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  border: none;
+}
+
+.filterTitle {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--gray-500);
+}
+
+.activityIconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  border-radius: 12px;
+}
+
+.activityIconContainerPositive {
+  background-color: rgba(1, 181, 116, 0.15);
+  color: var(--success-color);
+}
+
+.activityIconContainerNegative {
+  background-color: rgba(238, 93, 80, 0.15);
+  color: var(--danger-color);
+}
+
+.activityIconContainerNeutral {
+  background-color: rgba(67, 24, 255, 0.1);
+  color: var(--primary-color);
+}
+
+.loadMoreButton {
+  opacity: 1;
+  font-size: 12px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.loadMoreButton:hover {
+  box-shadow: 0px 6px 16px rgba(67, 24, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.loadMoreButtonDisabled {
+  opacity: 0.6;
+}
+
+.tabNavLink {
+  margin-right: 8px;
+  display: inline-flex;
+  vertical-align: middle;
+}

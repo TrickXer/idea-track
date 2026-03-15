@@ -1,0 +1,104 @@
+/* OverviewTab Styles */
+
+:root {
+  --primary-color: #4318FF;
+  --secondary-color: #6C63FF;
+  --success-color: #01B574;
+  --warning-color: #FFB547;
+  --danger-color: #EE5D50;
+  --dark-bg: #1B254B;
+  --light-bg: #F4F7FE;
+  --white: #ffffff;
+  --gray-100: #F4F7FE;
+  --gray-200: #E9EDF7;
+  --gray-300: #A3AED0;
+  --gray-400: #707EAE;
+  --gray-500: #2B3674;
+  --card-shadow: 0px 18px 40px rgba(112, 144, 176, 0.12);
+  --border-radius: 20px;
+}
+
+.fieldLabel {
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+  color: var(--gray-500);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.fieldInput {
+  min-height: 100px;
+  font-size: 14px;
+  border-radius: 1.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--gray-200);
+  font-family: 'DM Sans', sans-serif;
+  transition: all 0.3s ease;
+  color: var(--gray-500);
+}
+
+.fieldInput:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0px 0px 0px 3px rgba(67, 24, 255, 0.1);
+  outline: none;
+}
+
+.fieldDisplay {
+  font-size: 14px;
+  border-radius: 1.5rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--gray-100);
+  color: var(--gray-500);
+  border: 1px solid var(--gray-200);
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.errorText {
+  font-size: 10px;
+  color: var(--danger-color);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.statusBadge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--success-color);
+}
+
+.progressBar {
+  height: 12px;
+  background-color: var(--gray-200);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.progressBar::after {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+}
+
+.levelProgressionTitle {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--gray-500);
+  font-weight: 700;
+}
+
+.completionTitle {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--gray-500);
+  font-weight: 700;
+}
+
+.actionButtonSpacing {
+  margin-bottom: 1rem;
+}

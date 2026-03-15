@@ -1,0 +1,96 @@
+/* SecurityTab Styles */
+
+:root {
+  --primary-color: #4318FF;
+  --secondary-color: #6C63FF;
+  --success-color: #01B574;
+  --warning-color: #FFB547;
+  --danger-color: #EE5D50;
+  --dark-bg: #1B254B;
+  --light-bg: #F4F7FE;
+  --white: #ffffff;
+  --gray-100: #F4F7FE;
+  --gray-200: #E9EDF7;
+  --gray-300: #A3AED0;
+  --gray-400: #707EAE;
+  --gray-500: #2B3674;
+  --card-shadow: 0px 18px 40px rgba(112, 144, 176, 0.12);
+}
+
+.passwordField {
+  margin-bottom: 1.5rem;
+}
+
+.passwordLabel {
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--gray-500);
+}
+
+.passwordInput {
+  font-size: 14px;
+  border-radius: 12px;
+  padding: 12px 16px;
+  border: 1px solid var(--gray-200);
+  transition: all 0.3s ease;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--gray-500);
+}
+
+.passwordInput:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0px 0px 0px 3px rgba(67, 24, 255, 0.1);
+  outline: none;
+}
+
+.validationRuleItem {
+  font-size: 12px;
+  padding: 8px 12px;
+  margin-bottom: 6px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.validationRuleMet {
+  color: var(--success-color);
+  background-color: rgba(1, 181, 116, 0.1);
+}
+
+.validationRuleNotMet {
+  color: var(--danger-color);
+  background-color: rgba(238, 93, 80, 0.1);
+}
+
+.deleteAccountButton {
+  margin-top: 2rem;
+  padding: 12px 24px;
+  background: var(--danger-color);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.deleteAccountButton:hover {
+  box-shadow: 0px 6px 16px rgba(238, 93, 80, 0.3);
+  transform: translateY(-2px);
+}
+
+.alertBox {
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  background-color: var(--gray-100);
+  border: 1px solid var(--gray-200);
+  color: var(--gray-500);}

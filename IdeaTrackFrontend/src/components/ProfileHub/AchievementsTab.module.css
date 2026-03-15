@@ -1,0 +1,53 @@
+/* AchievementsTab Styles */
+
+:root {
+  --primary-color: #4318FF;
+  --secondary-color: #6C63FF;
+  --success-color: #01B574;
+  --warning-color: #FFB547;
+  --danger-color: #EE5D50;
+  --dark-bg: #1B254B;
+  --light-bg: #F4F7FE;
+  --white: #ffffff;
+  --gray-100: #F4F7FE;
+  --gray-200: #E9EDF7;
+  --gray-300: #A3AED0;
+  --gray-400: #707EAE;
+  --gray-500: #2B3674;
+  --card-shadow: 0px 18px 40px rgba(112, 144, 176, 0.12);
+}
+
+.badgeCard {
+  min-height: 160px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+}
+
+.badgeCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 24px 48px rgba(112, 144, 176, 0.2);
+  border-color: var(--primary-color);
+}
+
+.badgeEmoji {
+  font-size: 48px;
+  margin-bottom: 12px;
+  display: inline-block;
+}
+
+.badgeText {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  text-align: center;}

@@ -1,0 +1,28 @@
+.reviewersContainer {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 0.5rem;
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  max-width: none;
+}
+
+.reviewersContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.reviewersContainer {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.reviewersContainerSingleNode {
+  justify-content: center;
+}
+
+.reviewersContainerMultiNode {
+  justify-content: center;
+}

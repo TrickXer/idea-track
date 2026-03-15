@@ -1,0 +1,58 @@
+/* ReviewerNode Styles */
+
+.reviewerCard {
+  padding: 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.reviewerHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.reviewerIcon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reviewerInfo {
+  flex-grow: 1;
+}
+
+.reviewerName {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.reviewerRole {
+  color: var(--bs-info);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.reviewerStatus {
+  font-size: 12px;
+  color: var(--bs-secondary);
+}
+
+.reviewerDetails {
+  margin-top: 0.75rem;
+}
+
+.reviewerDetailsLabel {
+  font-size: 12px;
+  color: var(--bs-secondary);
+  font-weight: bold;
+}
+
+.chevronIcon {
+  opacity: 0.6;
+  flex-shrink: 0;
+}

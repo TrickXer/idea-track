@@ -1,0 +1,249 @@
+/* ============================================================
+   IdeaTrack — Reviewer Module Styles
+   Covers: vertical stepper (Timeline), refine marker,
+   discussion bubbles, decision form, stat cards,
+   table container, status pills, and layout utilities.
+   ============================================================ */
+
+/* ─── Design Tokens ─── */
+:root {
+  --primary:      #4318ff;
+  --primary-dk:   #3311cc;
+  --bg:           #f4f7fe;
+  --text-main:    #2b3674;
+  --text-muted:   #a3aed0;
+  --card-radius:  20px;
+  --step-done:    #10b981;
+  --step-cur:     #ef4444;
+  --step-idle:    #cbd5e1;
+}
+
+/* ─── Spin animation (refresh icons) ─── */
+@keyframes it-spin { to { transform: rotate(360deg); } }
+.spin { animation: it-spin .8s linear infinite; display: inline-block; }
+
+/* ═══════════════════════════════════════
+   STAT CARDS  (Reviewer Dashboard)
+═══════════════════════════════════════ */
+.stat-card {
+  background: #fff;
+  border: none;
+  border-radius: var(--card-radius);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, .05);
+  padding: 1.1rem 1rem;
+  text-align: center;
+  transition: transform .25s;
+}
+.stat-card:hover { transform: translateY(-3px); }
+.stat-card .stat-icon  { font-size: 1.5rem; margin-bottom: .35rem; }
+.stat-card .stat-value { font-size: 2rem; font-weight: 800; line-height: 1; color: var(--text-main); }
+.stat-card .stat-label { font-size: .78rem; color: var(--text-muted); margin-top: .3rem; }
+
+/* ═══════════════════════════════════════
+   TABLE CONTAINER  (Reviewer Dashboard)
+═══════════════════════════════════════ */
+.table-container {
+  background: #fff;
+  border-radius: var(--card-radius);
+  padding: 1.25rem 1.25rem .5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, .05);
+}
+.idea-row {
+  cursor: pointer;
+  border-bottom: 1px solid var(--bg);
+  transition: background .15s;
+}
+.idea-row:hover { background: #f8fafc; }
+.idea-row td { font-size: .88rem; vertical-align: middle; padding: .85rem .75rem; }
+.idea-row th {
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .4px;
+  padding: .65rem .75rem;
+  border-bottom: 1px solid #edf0f9;
+}
+
+/* Filter pill buttons */
+.pill-btn {
+  border-radius: 20px !important;
+  font-size: .8rem;
+  font-weight: 600;
+  padding: .3rem .9rem !important;
+  border-width: 1.5px !important;
+}
+
+/* ═══════════════════════════════════════
+   STATUS PILLS  (.sp and .sp-*)
+═══════════════════════════════════════ */
+.sp {
+  padding: .28em .75em;
+  border-radius: 20px;
+  font-size: .78rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.sp-UNDERREVIEW     { background: #fff3cd; color: #856404; }
+.sp-ACCEPTED        { background: #d1f0e0; color: #0a6640; }
+.sp-REJECTED        { background: #fde8e8; color: #9c1616; }
+.sp-REFINE          { background: #fff0d9; color: #8a4500; }
+.sp-PENDING         { background: #f0f0f0; color: #555; }
+.sp-SUBMITTED       { background: #e8eeff; color: #3050cc; }
+.sp-PROJECTPROPOSAL { background: #f3e8ff; color: #6a0dad; }
+.sp-APPROVED        { background: #d1f0e0; color: #0a6640; }
+.sp-DRAFT           { background: #f0f0f0; color: #666; }
+
+/* ═══════════════════════════════════════
+   DETAIL VIEW WRAPPER
+═══════════════════════════════════════ */
+.detail-view-wrap {
+  background: #fff;
+  border-radius: var(--card-radius);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, .08);
+  padding: 1.5rem;
+}
+
+/* ═══════════════════════════════════════
+   VERTICAL STEPPER  (Timeline component)
+═══════════════════════════════════════ */
+.stepper-v {
+  list-style: none;
+  padding-left: 12px;
+  margin: 0;
+}
+
+.step-v-item {
+  position: relative;
+  padding-bottom: 32px;
+  border-left: 3px solid var(--step-idle);
+  padding-left: 24px;
+}
+.step-v-item::before {
+  content: '';
+  position: absolute;
+  left: -11px;
+  top: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--step-idle);
+  z-index: 2;
+}
+
+/* Completed step — green connector + green filled node */
+.step-v-item.sv-done { border-left-color: var(--step-done); }
+.step-v-item.sv-done::before {
+  background: var(--step-done);
+  border-color: var(--step-done);
+}
+
+/* Current in-progress step — red connector + pulsing red node */
+.step-v-item.sv-curr { border-left-color: var(--step-cur); }
+.step-v-item.sv-curr::before {
+  background: var(--step-cur);
+  border-color: var(--step-cur);
+  box-shadow: 0 0 10px rgba(239, 68, 68, .45);
+}
+
+/* Bypassed step — green bar connector, gray ring node ("Not Required") */
+.step-v-item.sv-bar-filled { border-left-color: var(--step-done); }
+/* node stays the default idle ring — no ::before override for bypassed */
+
+/* Rejected terminal node — solid red dot; green bar comes from sv-bar-filled */
+.step-v-item.sv-rejected::before {
+  background: var(--step-cur);
+  border-color: var(--step-cur);
+}
+
+/* Last step has no connector bar */
+.step-v-item:last-child { border-left: none; padding-bottom: 0; }
+
+.step-v-label { font-weight: 600; font-size: .85rem; color: var(--text-main); }
+.step-v-time  { font-size: .72rem; color: var(--text-muted); margin-top: 2px; }
+
+/* ═══════════════════════════════════════
+   REFINE SIDE-CALLOUT MARKER
+═══════════════════════════════════════ */
+.refine-marker {
+  background: #fff8ee;
+  border: 1.5px solid #f5a623;
+  border-left: 4px solid #f5a623;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: .82rem;
+  position: relative;
+}
+.refine-marker-header {
+  font-weight: 700;
+  color: #8a4500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+.refine-marker-date {
+  margin-left: auto;
+  font-weight: 400;
+  font-size: .72rem;
+  color: #a06020;
+}
+.refine-marker-body {
+  color: #6b4c1e;
+  line-height: 1.4;
+}
+
+/* ═══════════════════════════════════════
+   DISCUSSION BUBBLES
+═══════════════════════════════════════ */
+.chat-bubble {
+  background: #f4f7fe;
+  border-radius: 12px;
+  padding: 12px 15px;
+  margin-bottom: 12px;
+  border-left: 4px solid var(--primary);
+}
+.chat-bubble.is-reply {
+  margin-left: 1.5rem;
+  border-left-color: #a3aed0;
+  background: #fafbff;
+}
+
+/* ─── Reviewer avatar initial circle ─── */
+.it-avatar {
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: .85rem;
+  flex-shrink: 0;
+}
+
+/* ─── Decision form feedback label ─── */
+.fb-label { font-weight: 600; font-size: .85rem; color: var(--text-main); }
+
+/* ═══════════════════════════════════════
+   EMPTY / LOADING STATE
+═══════════════════════════════════════ */
+.it-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-muted);
+  font-size: .9rem;
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE TWEAKS
+═══════════════════════════════════════ */
+@media (max-width: 768px) {
+  .detail-right-col {
+    border-left: none !important;
+    border-top: 1px solid #edf0f9;
+    padding-top: 1rem;
+    margin-top: 1rem;
+  }
+}

@@ -1,0 +1,47 @@
+/* ProfileHub Index Styles */
+
+.profileImageContainer {
+  position: relative;
+}
+
+.imageUploadButton {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0.5rem;
+  background: white;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  color: #4318FF;
+  transition: all 0.3s ease;
+}
+
+.imageUploadButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 16px rgba(67, 24, 255, 0.2);
+}
+
+.imageDeleteButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem;
+  background: #EE5D50;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.imageDeleteButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 16px rgba(238, 93, 80, 0.2);
+}
+
+.tabLink {
+  font-size: 12px;
+}

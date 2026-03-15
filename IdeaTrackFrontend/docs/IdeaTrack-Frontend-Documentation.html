@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IdeaTrack Frontend Technical Documentation</title>
+  <style>
+    :root {
+      --ink: #16213d;
+      --muted: #5f6b85;
+      --accent: #1f6feb;
+      --accent-soft: #eaf2ff;
+      --line: #d9e2f2;
+      --surface: #ffffff;
+      --bg: #f5f8fc;
+      --success: #12794b;
+      --warning: #9a6700;
+      --danger: #b42318;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Segoe UI", Calibri, Arial, sans-serif;
+      line-height: 1.55;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px;
+    }
+
+    .cover {
+      background: linear-gradient(135deg, #12203f 0%, #1f6feb 62%, #5aa6ff 100%);
+      color: #fff;
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 28px;
+      box-shadow: 0 18px 44px rgba(18, 32, 63, 0.22);
+    }
+
+    .cover h1 {
+      margin: 0 0 10px;
+      font-size: 38px;
+      line-height: 1.15;
+    }
+
+    .cover p {
+      margin: 0;
+      max-width: 760px;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 16px;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .meta-card {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .meta-card strong {
+      display: block;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      color: rgba(255, 255, 255, 0.74);
+    }
+
+    section {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 28px rgba(16, 24, 40, 0.05);
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 26px;
+      line-height: 1.2;
+    }
+
+    h3 {
+      margin: 22px 0 10px;
+      font-size: 18px;
+    }
+
+    h4 {
+      margin: 18px 0 8px;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    ul, ol {
+      margin: 8px 0 14px 22px;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .lead {
+      font-size: 16px;
+      color: var(--muted);
+    }
+
+    .grid-2, .grid-3 {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      background: #fbfdff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 12px;
+      margin: 0 6px 6px 0;
+    }
+
+    .note {
+      border-left: 4px solid var(--accent);
+      background: #f8fbff;
+      padding: 14px 16px;
+      border-radius: 10px;
+      margin: 12px 0;
+    }
+
+    .warning {
+      border-left-color: #f59e0b;
+      background: #fffaf0;
+    }
+
+    .danger {
+      border-left-color: #dc2626;
+      background: #fff6f5;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 18px;
+      font-size: 14px;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f2f7ff;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    code, pre {
+      font-family: Consolas, "Courier New", monospace;
+    }
+
+    pre {
+      margin: 12px 0 16px;
+      padding: 16px;
+      background: #0f172a;
+      color: #e5eefc;
+      border-radius: 14px;
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .small {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      padding: 14px 0 28px;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        max-width: none;
+        padding: 0;
+      }
+
+      section, .cover {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+
+      .cover {
+        border-radius: 0;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .meta, .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="cover">
+      <h1>IdeaTrack Frontend Technical Documentation</h1>
+      <p>
+        Comprehensive architecture and module documentation for the IdeaTrack React frontend, with special focus on User Management,
+        authentication, authorization, profile handling, and reviewer-stage assignment.
+      </p>
+      <div class="meta">
+        <div class="meta-card">
+          <strong>Project Type</strong>
+          React SPA for enterprise innovation management
+        </div>
+        <div class="meta-card">
+          <strong>Build Stack</strong>
+          React 19, TypeScript, Vite, Axios, React Router 7
+        </div>
+        <div class="meta-card">
+          <strong>Prepared On</strong>
+          March 15, 2026
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <h2>1. Project Introduction</h2>
+      <p class="lead">
+        IdeaTrack is a role-based internal innovation platform where employees submit ideas, reviewers evaluate them in staged workflows,
+        and administrators govern user access, categories, analytics, and proposal operations.
+      </p>
+      <div class="grid-2">
+        <div class="card">
+          <h3>What the Frontend Does</h3>
+          <ul>
+            <li>Provides a complete browser-based interface for idea submission, review, approval, proposal creation, analytics, and profile management.</li>
+            <li>Applies role-aware navigation and route protection so each user sees only the surfaces relevant to their responsibilities.</li>
+            <li>Connects to a Spring Boot backend through REST APIs and server-sent events for real-time notifications.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Primary User Groups</h3>
+          <ul>
+            <li><strong>Employees</strong>: create ideas, track status, manage proposals, and maintain their profiles.</li>
+            <li><strong>Reviewers</strong>: review assigned ideas, collaborate in stage discussions, and submit decisions.</li>
+            <li><strong>Admins</strong>: manage users, categories, reports, overdue reviewers, bulk operations, and system health.</li>
+            <li><strong>Super Admins</strong>: manage the full user base including admins.</li>
+          </ul>
+        </div>
+      </div>
+      <h3>Business Problem Solved</h3>
+      <p>
+        The application replaces fragmented idea handling across spreadsheets, email, and manual approvals with a structured digital workflow.
+        It centralizes user access, review assignments, notifications, analytics, and audit-friendly user operations in a single interface.
+      </p>
+      <h3>Role of the User Management Module</h3>
+      <p>
+        User Management is the operational control center for platform access. It allows admins and super admins to create accounts,
+        assign roles, update user details, delete users, and configure reviewer-stage mappings that directly affect the review pipeline.
+      </p>
+    </section>
+
+    <section>
+      <h2>2. Technology Stack</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Area</th>
+            <th>Implementation</th>
+            <th>Why It Is Used</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>UI Framework</td>
+            <td>React 19.2.0</td>
+            <td>Component-based composition, modern hook model, and scalable SPA development.</td>
+          </tr>
+          <tr>
+            <td>Build Tool</td>
+            <td>Vite 7 with <code>@vitejs/plugin-react-swc</code></td>
+            <td>Fast startup, fast HMR, lightweight configuration, and modern TypeScript-friendly development.</td>
+          </tr>
+          <tr>
+            <td>Language</td>
+            <td>TypeScript 5.9</td>
+            <td>Improves maintainability through static typing for DTOs, props, and API contracts.</td>
+          </tr>
+          <tr>
+            <td>Routing</td>
+            <td>react-router-dom 7.13</td>
+            <td>Supports route-driven UX, nested layouts, redirects, and role-aware protection.</td>
+          </tr>
+          <tr>
+            <td>Global State</td>
+            <td>React Context</td>
+            <td>Used selectively for auth, notifications, and toasts without introducing Redux-level complexity.</td>
+          </tr>
+          <tr>
+            <td>HTTP Client</td>
+            <td>Axios 1.13</td>
+            <td>Centralized interceptors, cleaner request configuration, auth header injection, and consistent error handling.</td>
+          </tr>
+          <tr>
+            <td>Forms</td>
+            <td>Native controlled state plus react-hook-form in selected admin forms</td>
+            <td>Simple forms stay lightweight; complex forms such as category management benefit from validation and field registration.</td>
+          </tr>
+          <tr>
+            <td>Styling</td>
+            <td>Plain CSS, CSS modules, Bootstrap 5, and inline component styles</td>
+            <td>Allows quick UI delivery, component-specific encapsulation, and responsive utility support.</td>
+          </tr>
+          <tr>
+            <td>Charts</td>
+            <td>Recharts</td>
+            <td>Provides dashboard-ready chart primitives for employee, reviewer, and admin analytics.</td>
+          </tr>
+          <tr>
+            <td>Icons</td>
+            <td>lucide-react</td>
+            <td>Consistent iconography across dashboards, admin actions, profile controls, and notifications.</td>
+          </tr>
+          <tr>
+            <td>Auth Handling</td>
+            <td>JWT in localStorage plus client-side role decoding</td>
+            <td>Enables stateless route gating and request authorization across the SPA.</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note warning">
+        <strong>Architecture note:</strong> the project does not use a dedicated <code>services</code> folder. The service layer lives in <code>src/utils</code>, which effectively acts as the API and helper layer.
+      </div>
+    </section>
+
+    <section>
+      <h2>3. System Architecture</h2>
+      <h3>Frontend Architecture Pattern</h3>
+      <p>
+        The frontend follows a feature-oriented SPA architecture with route-driven pages, reusable components, and a thin global state layer.
+        Most business data is fetched close to the page or feature component that needs it, while auth, notifications, and toast feedback are elevated into providers.
+      </p>
+      <pre>Browser
+  -> React App
+    -> App.tsx providers
+      -> AuthProvider
+      -> NotificationProvider
+      -> ToastProvider
+      -> BrowserRouter
+        -> ProtectedRoute
+          -> Layout
+            -> Feature Pages
+              -> Components
+                -> utils/* API modules
+                  -> Spring Boot backend (REST + SSE)</pre>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Provider Layer</h3>
+          <p>Auth, notifications, and toast feedback are initialized once near the application root and reused throughout the route tree.</p>
+        </div>
+        <div class="card">
+          <h3>Route Layer</h3>
+          <p>Routes separate public pages from authenticated pages and apply role restrictions through a dedicated guard component.</p>
+        </div>
+        <div class="card">
+          <h3>Feature Layer</h3>
+          <p>Pages assemble feature-specific components and call API modules directly rather than relying on a centralized data store.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>4. Folder Structure</h2>
+      <pre>src/
+  App.tsx                  Application routes and provider composition
+  main.tsx                 React entry point
+  components/             Reusable UI and feature components
+    admin/                Category and bulk admin tools
+    auth/                 Route protection and auth styling
+    ConfirmationModal/    Shared confirmation dialog
+    Hierarchy/            Idea hierarchy and profile modal views
+    idea/                 Idea cards, idea details, idea timeline components
+    layout/               Sidebar, header, shell layout
+    notifications/        Bell, list items, notification UI
+    ProfileHub/           Profile tabs, type mapping, presentation logic
+    proposals/            Proposal forms and proposal editing controls
+    reviewer/             Reviewer decision and discussion components
+    ReviewerStageAssignment/
+    Toast/                Toast renderer
+    user/                 User cards, registration modal, user edit modal
+  context/                Global providers for notifications and toast state
+  hooks/                  Small shared hooks for error handling and toasts
+  pages/                  Route-level screens grouped by domain
+    admin/
+    analytics/
+    auth/
+    employee/
+    idea/
+    landing/
+    notifications/
+    profile/
+    proposal/
+    reviewer/
+  utils/                  API clients, auth helpers, storage, interceptors, shared types
+  assets/                 Static source assets</pre>
+      <h3>Where User Management Lives</h3>
+      <ul>
+        <li><strong>Admin user operations</strong>: <code>src/pages/admin</code> plus <code>src/components/user</code>.</li>
+        <li><strong>Access control</strong>: <code>src/utils/authContext.tsx</code> and <code>src/components/auth/ProtectedRoute.tsx</code>.</li>
+        <li><strong>User data APIs</strong>: <code>src/utils/adminApi.ts</code>, <code>src/utils/profileApi.ts</code>, and <code>src/utils/reviewerAssignmentApi.ts</code>.</li>
+        <li><strong>Self-service account management</strong>: <code>src/pages/profile/ProfileHub.tsx</code> plus the <code>ProfileHub</code> component folder.</li>
+      </ul>
+      <h3>Why This Structure Works</h3>
+      <p>
+        This structure keeps route ownership clear while still allowing cross-cutting behavior to be shared. Pages remain responsible for feature orchestration,
+        components focus on rendering and interaction, and utilities isolate backend communication and storage logic.
+      </p>
+    </section>
+
+    <section>
+      <h2>5. User Management Module Architecture</h2>
+      <p class="lead">
+        The User Management module spans account provisioning, user editing, profile maintenance, role governance, and reviewer assignment.
+        It is not a single page; it is a coordinated set of admin, profile, and access-control features.
+      </p>
+
+      <h3>Core Components</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>File Location</th>
+            <th>Purpose</th>
+            <th>Props</th>
+            <th>State / Hooks</th>
+            <th>Children / API Calls</th>
+            <th>Classification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>AdminConsole</td>
+            <td>src/pages/admin/AdminConsole.tsx</td>
+            <td>Admin-facing user management for reviewers and employees, including stage assignment tab.</td>
+            <td>None</td>
+            <td><code>useState</code>, <code>useMemo</code>, <code>useEffect</code>, <code>useSearchParams</code></td>
+            <td>Uses UserCard, RegisterUserModal, UserModal, ReviewerStageAssignment. Calls <code>listUsers</code> and <code>createUser</code>.</td>
+            <td>Smart feature page</td>
+          </tr>
+          <tr>
+            <td>SuperAdminConsole</td>
+            <td>src/pages/admin/SuperAdminConsole.tsx</td>
+            <td>Full user management including admin accounts.</td>
+            <td>None</td>
+            <td><code>useState</code>, <code>useMemo</code>, <code>useEffect</code></td>
+            <td>Uses UserCard, RegisterUserModal, UserModal, ReviewerStageAssignment. Calls <code>listUsers</code> and <code>createUser</code>.</td>
+            <td>Smart feature page</td>
+          </tr>
+          <tr>
+            <td>UserCard</td>
+            <td>src/components/user/UserCard.tsx</td>
+            <td>Renders a user summary card in the management list.</td>
+            <td><code>user</code>, <code>onManage</code></td>
+            <td>Stateless</td>
+            <td>No API calls; emits manage action.</td>
+            <td>Presentational reusable component</td>
+          </tr>
+          <tr>
+            <td>RegisterUserModal</td>
+            <td>src/components/user/RegisterUserModal.tsx</td>
+            <td>Creates new users and displays the generated temporary password after success.</td>
+            <td><code>open</code>, <code>onClose</code>, <code>onSubmit</code>, <code>allowedRoles</code></td>
+            <td><code>useState</code>, <code>useEffect</code></td>
+            <td>Calls <code>getDepartments</code>; defers submission to parent callback; shows TempPasswordPopup.</td>
+            <td>Feature component with reusable modal behavior</td>
+          </tr>
+          <tr>
+            <td>UserModal</td>
+            <td>src/components/user/UserModal.tsx</td>
+            <td>Edits user profile-like fields, role, department, and deletes the selected user.</td>
+            <td><code>open</code>, <code>user</code>, <code>onClose</code>, <code>onChanged</code>, <code>allowRoles</code></td>
+            <td><code>useState</code>, <code>useEffect</code>, <code>useMemo</code>, <code>useShowToast</code></td>
+            <td>Uses ConfirmationModal. Calls <code>updateUser</code>, <code>deleteUser</code>, <code>getDepartments</code>.</td>
+            <td>Smart feature modal</td>
+          </tr>
+          <tr>
+            <td>ReviewerStageAssignment</td>
+            <td>src/pages/reviewer/ReviewerStageAssignment.tsx</td>
+            <td>Switches between reviewer assignment creation and current assignment display.</td>
+            <td>None</td>
+            <td><code>useState</code></td>
+            <td>Uses creation and display modules.</td>
+            <td>Feature page shell</td>
+          </tr>
+          <tr>
+            <td>ReviewerStageAssignment_Creation_Module</td>
+            <td>src/components/ReviewerStageAssignment/ReviewerStageAssignment_Creation_Module.tsx</td>
+            <td>Assigns a reviewer to a category stage after selecting department, category, stage, and reviewer.</td>
+            <td>None</td>
+            <td><code>useState</code>, <code>useEffect</code>, <code>useRef</code>, <code>useShowToast</code></td>
+            <td>Calls <code>assignReviewerToStage</code>, <code>getAvailableReviewersList</code>, <code>getCategoriesAndStageCountByCategory</code>, and department lookup.</td>
+            <td>Smart feature component</td>
+          </tr>
+          <tr>
+            <td>ReviewerStageAssignment_Display_Module</td>
+            <td>src/components/ReviewerStageAssignment/ReviewerStageAssignment_Display_Module.tsx</td>
+            <td>Shows reviewer-stage mappings and allows removals.</td>
+            <td>None</td>
+            <td><code>useState</code>, <code>useEffect</code>, <code>useShowToast</code></td>
+            <td>Uses ConfirmationModal. Calls <code>assignedReviewerDetails</code> and <code>removeReviewerFromStage</code>.</td>
+            <td>Smart feature component</td>
+          </tr>
+          <tr>
+            <td>ProfileHub</td>
+            <td>src/pages/profile/ProfileHub.tsx</td>
+            <td>Self-service account area for profile editing, activity history, achievements, and security.</td>
+            <td>None</td>
+            <td><code>useState</code>, <code>useEffect</code>, <code>useRef</code>, <code>useShowToast</code></td>
+            <td>Uses OverviewTab, ActivityTab, AchievementsTab, SecurityTab, ConfirmationModal. Calls profile and gamification APIs.</td>
+            <td>Smart feature page</td>
+          </tr>
+          <tr>
+            <td>OverviewTab</td>
+            <td>src/components/ProfileHub/OverviewTab.tsx</td>
+            <td>Validates and updates editable profile fields such as name, phone, and bio.</td>
+            <td><code>user</code>, <code>isEditing</code>, <code>onProfileUpdated</code>, <code>onEditingChange</code></td>
+            <td><code>useState</code>, <code>useEffect</code>, <code>useShowToast</code></td>
+            <td>Calls <code>updateProfile</code>.</td>
+            <td>Feature component</td>
+          </tr>
+          <tr>
+            <td>SecurityTab</td>
+            <td>src/components/ProfileHub/SecurityTab.tsx</td>
+            <td>Handles password changes and soft deletion of the current user profile.</td>
+            <td><code>onPasswordChanged</code></td>
+            <td><code>useState</code>, <code>useMemo</code>, <code>useShowToast</code></td>
+            <td>Uses ConfirmationModal. Calls <code>changePassword</code> and <code>deleteProfile</code>.</td>
+            <td>Feature component</td>
+          </tr>
+          <tr>
+            <td>ProtectedRoute</td>
+            <td>src/components/auth/ProtectedRoute.tsx</td>
+            <td>Guards user-management routes and all other protected routes based on authentication and role allow-lists.</td>
+            <td><code>allow</code>, <code>children</code></td>
+            <td><code>useAuth</code>, <code>useLocation</code></td>
+            <td>No direct API calls.</td>
+            <td>Reusable infrastructure component</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>User Management Workflow</h3>
+      <ol>
+        <li>Admin navigates to <strong>/admin/users</strong> or super admin navigates to <strong>/super-admin</strong>.</li>
+        <li>The page loads users from <code>/api/admin/all</code> and filters visible roles according to console type.</li>
+        <li>Tabs segment the list by role. Search narrows results on name, email, user ID, and department.</li>
+        <li>Creating a user opens RegisterUserModal, which loads departments, validates basic input, and posts to <code>/api/admin/create</code>.</li>
+        <li>On success, the UI shows a temporary password popup and refreshes the user list.</li>
+        <li>Selecting a user opens UserModal, which computes a field-level diff and submits only changed values to <code>/api/admin/{id}</code>.</li>
+        <li>Deleting a user goes through ConfirmationModal, then calls <code>DELETE /api/admin/{id}</code>, refreshes the list, and emits toast feedback.</li>
+        <li>The Stage Assign tab lets admins bind reviewers to department category stages, which directly influences reviewer workload and downstream review flow.</li>
+      </ol>
+
+      <h3>Role and Permission Model</h3>
+      <p>
+        The frontend enforces coarse-grained access via route guards and fine-grained operational limits through page configuration.
+        For example, AdminConsole only allows creation and editing of reviewers and employees, while SuperAdminConsole additionally exposes admin-level role handling.
+      </p>
+      <div>
+        <span class="pill">EMPLOYEE</span>
+        <span class="pill">REVIEWER</span>
+        <span class="pill">ADMIN</span>
+        <span class="pill">SUPERADMIN</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>6. State Management</h2>
+      <h3>Where State Is Stored</h3>
+      <ul>
+        <li><strong>AuthProvider</strong>: JWT token, decoded payload, roles, login, and logout.</li>
+        <li><strong>NotificationProvider</strong>: live notification list, unread count, connection status, and singleton SSE connection lifecycle.</li>
+        <li><strong>ToastProvider</strong>: transient UI feedback messages.</li>
+        <li><strong>Feature-local state</strong>: user lists, forms, active tabs, modals, and loading flags remain inside pages and components.</li>
+      </ul>
+      <h3>Global State vs Local State</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Global</th>
+            <th>Local</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Authentication, notification stream, toast queue</td>
+            <td>Admin console tab, selected user, search term, modal open state, profile edit mode</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Data Flow Pattern in User Management</h3>
+      <pre>Admin action
+  -> component event handler
+    -> utils/adminApi.ts request
+      -> backend response
+        -> local state refresh or modal close
+          -> toast feedback
+            -> rerendered user list</pre>
+      <p>
+        The project intentionally avoids Redux or Zustand. This keeps the state model simple but pushes more responsibility onto page components to refetch and synchronize their data explicitly after mutations.
+      </p>
+    </section>
+
+    <section>
+      <h2>7. API Integration</h2>
+      <h3>Axios Configuration</h3>
+      <ul>
+        <li><code>src/utils/restApi.ts</code> defines a shared Axios instance with base URL <code>http://localhost:8091</code>.</li>
+        <li>Request interceptor adds <code>Authorization: Bearer &lt;jwt-token&gt;</code> when present.</li>
+        <li>Response interceptors log 401 and 403 cases; a separate app-level interceptor translates many backend errors into user-facing toasts.</li>
+      </ul>
+
+      <h3>User Management Endpoints</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Endpoint</th>
+            <th>Method</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>/api/admin/all</td><td>GET</td><td>Fetches all users for admin consoles.</td></tr>
+          <tr><td>/api/admin/create</td><td>POST</td><td>Creates a user and returns temp password data.</td></tr>
+          <tr><td>/api/admin/{id}</td><td>PUT</td><td>Updates user fields such as role, contact data, and profile URL.</td></tr>
+          <tr><td>/api/admin/{id}</td><td>DELETE</td><td>Deletes a user account.</td></tr>
+          <tr><td>/api/profile/departments</td><td>GET</td><td>Supplies department options to admin and signup forms.</td></tr>
+          <tr><td>/api/users/{id}/status</td><td>PATCH</td><td>Reserved for status toggling, though not a major UI flow yet.</td></tr>
+          <tr><td>/api/profile/me</td><td>GET / PUT / DELETE</td><td>Self-service profile retrieval, update, and soft delete.</td></tr>
+          <tr><td>/api/profile/me/password</td><td>PUT</td><td>Password change flow.</td></tr>
+          <tr><td>/api/profile/me/profile-photo</td><td>POST / DELETE</td><td>Profile image upload and removal.</td></tr>
+          <tr><td>/api/reviewerAssignment/*</td><td>GET / POST / DELETE</td><td>Reviewer-stage assignment configuration.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Request Lifecycle Example</h3>
+      <pre>Click "Create User"
+  -> RegisterUserModal submit()
+    -> createUser(payload)
+      -> POST /api/admin/create
+        -> backend returns created user + tempPassword
+          -> modal shows temp password
+            -> parent reloads listUsers()
+              -> UI updates user cards</pre>
+
+      <h3>Error Handling and Loading States</h3>
+      <ul>
+        <li>Most feature components use local <code>loading</code>, <code>saving</code>, or <code>submitting</code> flags.</li>
+        <li>Axios error interception standardizes many server responses into readable toast messages.</li>
+        <li>Several admin operations still rely on local <code>try/catch</code> plus console logging for secondary diagnostics.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>8. Authentication &amp; Authorization</h2>
+      <h3>Login Flow</h3>
+      <ol>
+        <li>User submits email and password on the login page.</li>
+        <li><code>AuthProvider.login()</code> posts credentials to <code>/api/auth/login</code>.</li>
+        <li>The backend returns a JWT token.</li>
+        <li>The token is saved to localStorage under <code>jwt-token</code>.</li>
+        <li>The token is decoded client-side to extract roles.</li>
+        <li>The user is redirected to admin, reviewer, or employee landing routes based on highest role.</li>
+      </ol>
+      <h3>Protected Routes</h3>
+      <p>
+        <code>ProtectedRoute</code> blocks unauthenticated users and optionally checks whether at least one of the user’s roles appears in the route’s <code>allow</code> list.
+      </p>
+      <h3>How User Management Respects Access Control</h3>
+      <ul>
+        <li><strong>/admin/users</strong> is limited to ADMIN and SUPERADMIN.</li>
+        <li><strong>/super-admin</strong> is limited to SUPERADMIN only.</li>
+        <li>AdminConsole restricts role creation and editing to reviewer and employee accounts.</li>
+        <li>SuperAdminConsole expands this to include admin accounts.</li>
+      </ul>
+      <div class="note danger">
+        <strong>Security caution:</strong> role checks are client-side UX gates and must still be enforced by the backend. The frontend correctly assumes the backend remains the source of authorization truth.
+      </div>
+    </section>
+
+    <section>
+      <h2>9. User Journey</h2>
+      <ol>
+        <li>User opens the application and lands on a public marketing-style landing page.</li>
+        <li>User signs up or logs in.</li>
+        <li>After login, routing redirects based on role: employee dashboard, reviewer dashboard, or admin dashboard.</li>
+        <li>Employees create ideas, view idea details, and eventually convert accepted ideas into proposals.</li>
+        <li>Reviewers work from their dashboard, inspect assigned ideas, and submit decisions or stage discussions.</li>
+        <li>Admins manage platform structure through user management, category management, bulk operations, reports, and health views.</li>
+        <li>Users maintain personal details in Profile Hub, including password and profile photo.</li>
+        <li>Notifications appear in real time through SSE and remain available in a paginated activity page.</li>
+      </ol>
+      <h3>User Management Journey</h3>
+      <pre>Admin Dashboard
+  -> User Management
+    -> role tab selection
+      -> user list fetch
+        -> create or manage selected user
+          -> reviewer assignment if needed
+            -> refreshed state + toast confirmation</pre>
+    </section>
+
+    <section>
+      <h2>10. Performance Optimization</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Technique</th>
+            <th>Current Status</th>
+            <th>Observation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Lazy loading</td><td>Not implemented</td><td>All route components are imported eagerly in App.tsx.</td></tr>
+          <tr><td>Code splitting</td><td>Limited</td><td>Relies on Vite bundling, but no route-level <code>lazy()</code> strategy is used.</td></tr>
+          <tr><td>Memoization</td><td>Selective</td><td><code>useMemo</code> is used in admin filtering, payload diffing, and toast helper creation.</td></tr>
+          <tr><td>useCallback</td><td>Selective</td><td>Used where repeated handlers benefit from stability, especially around data loading.</td></tr>
+          <tr><td>Pagination</td><td>Partial</td><td>Notifications and some reviewer discussion endpoints support paging; admin user lists do not yet page.</td></tr>
+          <tr><td>Virtualization</td><td>Not present</td><td>Large lists still render directly in the DOM.</td></tr>
+        </tbody>
+      </table>
+      <p>
+        The current application is performant enough for moderate datasets, but user-management scalability would improve with server-side pagination,
+        route-level lazy loading, and a cache layer such as React Query.
+      </p>
+    </section>
+
+    <section>
+      <h2>11. Security</h2>
+      <ul>
+        <li><strong>Token protection</strong>: JWT is stored in localStorage and automatically attached to API calls. This is simple but carries XSS exposure if the application were ever compromised.</li>
+        <li><strong>XSS mitigation</strong>: the frontend mostly renders plain strings and does not rely on unsafe HTML insertion.</li>
+        <li><strong>Input validation</strong>: profile and security forms include client-side validation; create-user flow uses minimal client checks and leans on backend validation.</li>
+        <li><strong>Secure API usage</strong>: auth headers are centralized, and protected routes reduce accidental exposure of privileged screens.</li>
+        <li><strong>Role-based security</strong>: user-management pages are visible only to authorized roles, while backend endpoints should remain the final enforcement layer.</li>
+      </ul>
+      <h3>Security Improvement Opportunities</h3>
+      <ul>
+        <li>Move API base URL to environment variables.</li>
+        <li>Add proactive token expiration handling instead of waiting for 401 failures.</li>
+        <li>Harden duplicate-email validation before user creation to improve UX.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>12. Error Handling</h2>
+      <h3>Implemented Handling</h3>
+      <ul>
+        <li>Global Axios interceptor maps server errors into toast messages.</li>
+        <li>Feature components catch specific failures such as failed profile loads, failed user updates, or failed assignment removals.</li>
+        <li>Loading spinners and empty states exist on dashboards, notifications, assignments, and profile screens.</li>
+      </ul>
+      <h3>User Management Edge Cases Covered</h3>
+      <ul>
+        <li>Department fetch failure when creating users.</li>
+        <li>Save-without-changes prevention in UserModal.</li>
+        <li>Password policy validation before changing credentials.</li>
+        <li>Confirmation before destructive actions such as deleting users or profiles.</li>
+      </ul>
+      <h3>Edge Cases Still Mostly Backend-Driven</h3>
+      <ul>
+        <li>Duplicate email on user creation.</li>
+        <li>Permission denied after stale client role state.</li>
+        <li>Expired JWT during session.</li>
+        <li>Malformed or missing notification metadata.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>13. How to Explain the User Management Module in an Interview</h2>
+      <h3>2-Minute Version</h3>
+      <p>
+        I built a role-based user-management flow inside a React and TypeScript SPA. Admins and super admins can create users, assign roles,
+        update user details, delete accounts, and configure reviewer-stage assignments that drive the review workflow. Access is controlled through JWT-based auth,
+        route guards, and role-aware UI composition. The module uses Axios for API calls, React Context for auth and notifications, and local component state for operational screens.
+      </p>
+      <h3>5-Minute Deep Explanation</h3>
+      <p>
+        The system separates concerns cleanly. App.tsx composes global providers and route protection. AuthProvider decodes JWT roles and exposes them through a hook,
+        so navigation and protected routes can respond immediately to the user’s privileges. The admin user-management pages then specialize behavior further:
+        AdminConsole only manages reviewer and employee accounts, while SuperAdminConsole can also manage admins. User creation and editing are modal-driven.
+        RegisterUserModal loads departments, submits account creation, and surfaces the generated temporary password. UserModal computes a diff payload so unchanged fields are not resent.
+        In parallel, the profile subsystem handles self-service updates, password changes, photo management, and activity history. ReviewerStageAssignment extends user management into workflow governance,
+        because who reviews what stage is effectively part of access and responsibility management.
+      </p>
+      <h3>Key Technical Highlights</h3>
+      <ul>
+        <li>JWT decoding without an external auth SDK.</li>
+        <li>Context-based auth, notifications, and toasts instead of heavyweight global state.</li>
+        <li>Role-aware route protection and role-aware console behavior.</li>
+        <li>Reusable modal architecture for create, edit, and confirm-delete flows.</li>
+        <li>Singleton SSE notification stream to avoid duplicate real-time connections.</li>
+      </ul>
+      <h3>Challenges Solved</h3>
+      <ul>
+        <li>Preventing duplicate SSE connections across multiple notification consumers.</li>
+        <li>Supporting both admin and super admin workflows without duplicating all component logic.</li>
+        <li>Handling profile data, auth state, and user-admin operations without a large external state library.</li>
+      </ul>
+      <h3>Scalability Considerations</h3>
+      <ul>
+        <li>Add server-side pagination and filtering to admin user lists.</li>
+        <li>Introduce React Query or a similar cache layer for mutation invalidation and consistent loading states.</li>
+        <li>Split route bundles lazily for faster first load.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>14. Client-Friendly Explanation</h2>
+      <p>
+        IdeaTrack is a web application that helps an organization collect ideas, review them properly, and turn strong ideas into formal proposals.
+        Different people see different tools depending on their role. Employees submit ideas, reviewers assess them, and administrators manage users,
+        categories, reporting, and system setup.
+      </p>
+      <p>
+        The User Management area lets administrators add new users, assign what kind of access they should have, update their information,
+        and organize which reviewers handle which review stages. That makes the platform easier to operate and keeps responsibilities clear.
+      </p>
+      <p>
+        From a business perspective, the architecture is scalable because the application already separates authentication, user operations,
+        profile management, notifications, and analytics into distinct modules. That means new roles, new screens, or deeper reporting can be added without redesigning the whole product.
+      </p>
+    </section>
+
+    <section>
+      <h2>15. Conclusion</h2>
+      <p>
+        IdeaTrack’s frontend is a well-structured React SPA built around role-based operations and a clear provider-driven shell. Its strongest architectural qualities are
+        the separation between route orchestration, reusable feature components, and API utilities, plus a focused approach to global state.
+      </p>
+      <p>
+        The User Management module is technically significant because it connects access control, account lifecycle management, self-service profile operations,
+        and reviewer assignment into one coherent operational capability. For an interview, it demonstrates practical frontend architecture, business workflow modeling,
+        and real-world admin UX design. For a client, it demonstrates control, governance, and scalability.
+      </p>
+      <div class="note">
+        This document is based on the current implementation in the workspace, including routes, components, contexts, hooks, and API utility modules.
+      </div>
+    </section>
+
+    <div class="footer">IdeaTrack Frontend Documentation</div>
+  </div>
+</body>
+</html>
