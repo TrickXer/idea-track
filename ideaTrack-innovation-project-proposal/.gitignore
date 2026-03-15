@@ -1,0 +1,49 @@
+/.metadata/
+/.venv/
+.sonarlint/
+*.class
+
+# Application properties (credentials, secrets)
+IdeaTrackingMono/src/test/resources/application.properties
+IdeaTrackingMono/src/main/resources/application.properties
+IdeaTrackingMono/bin/src/main/resources/application.properties
+IdeaTrackingMono/bin/src/test/resources/application.properties
+
+# Build files
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+# Local generated workspace/build directories
+IdeaTrackingMono/.metadata/
+IdeaTrackingMono/bin/

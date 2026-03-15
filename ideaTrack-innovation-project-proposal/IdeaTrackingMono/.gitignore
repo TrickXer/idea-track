@@ -1,0 +1,2 @@
+# This file is deprecated - all .gitignore rules are now in the root .gitignore
+# Keeping this file for backward compatibility, but all rules are centralized in C:\GencNext\Project\.gitignore
